@@ -124,7 +124,7 @@ func main() {
 	switch cmd {
 	case "auth":
 		authCmd.Parse(os.Args[2:])
-		username := authCmd.Arg(1)
+		username := authCmd.Arg(0)
 		if username == "" {
 			log.Fatal("usage: hydroxide auth <username>")
 		}
@@ -222,7 +222,7 @@ func main() {
 		}
 	case "export-secret-keys":
 		exportSecretKeysCmd.Parse(os.Args[2:])
-		username := exportSecretKeysCmd.Arg(1)
+		username := exportSecretKeysCmd.Arg(0)
 		if username == "" {
 			log.Fatal("usage: hydroxide export-secret-keys <username>")
 		}
@@ -288,7 +288,7 @@ func main() {
 		}()
 		log.Fatal(<-done)
 	default:
-		log.Println(`usage: hydroxide <command> <flags>
+		log.Println(`usage: hydroxide <flags> <command>
 		commands:
 			auth <username>		Login to ProtonMail via hydroxide
 			export-secret-keys	Export keys
